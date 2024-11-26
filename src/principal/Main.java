@@ -7,12 +7,8 @@ import ent.Persona;
 
 public class Main {
 	public static void main(String[] args) {
-		// Obtención de una lista de personas que cumplen las siguientes condiciones:
-	    // - El estado civil es "casado".
-	    // - La edad está entre 25 y 35 años.
-	    // - El nombre contiene la letra "a".
-	    // - El apellido termina con "z".
-		listadoPersonalizado();
+		
+		consultaPersonalizada();
 
 	}
 
@@ -79,25 +75,25 @@ public class Main {
 		pintaTablaCompleta(personas, "PERSONAS MÁS DE 65 AÑOS");
 	}
 
-	private static void listadoPersonalizado() {
-	    // Obtención de una lista de personas que cumplen las siguientes condiciones:
-	    // - El estado civil es "casado".
+	private static void consultaPersonalizada() {
+	    // Obtención de una lista de personas con las siguientes condiciones:
+	    // - El estado laboral es 'desempleado'.
 	    // - La edad está entre 25 y 35 años.
-	    // - El nombre contiene la letra "a".
-	    // - El apellido termina con "z".
+	    // - El nombre empieza con la letra 'a'.
+	    // - El apellido termina en la letra 's'.
 	    List<Persona> personasFiltradas = AccesoDatos.getPersonasEx(
 	            "*", 
 	            "apellido",
-	            "(estado_civil like 'casado') and (edad between 25 and 35) and (nombre like '%a%') and (apellido like '%z')"
+	            "(laboral like 'desempleado') and (edad between 25 and 35) and (nombre like 'a%') and (apellido like '%s')"
 	    );
 
-	    // Llamada a un método para mostrar los resultados en forma de tabla
+	    // Llamada a un método para mostrar los resultados en una tabla
 	    // con un encabezado que describe los filtros aplicados.
 	    pintaTablaCompleta(
 	            personasFiltradas, 
-	            "PERSONAS CASADAS ENTRE 25 Y 35 AÑOS\n" 
-	            + " ".repeat(20) + "SU NOMBRE CONTIENE LA LETRA 'A'\n" 
-	            + " ".repeat(20) + "Y SU APELLIDO TERMINA EN 'Z'"
+	            "PERSONAS DESEMPLEADAS ENTRE 25 Y 35 AÑOS\n" 
+	            + " ".repeat(20) + "SU NOMBRE EMPIEZA POR A\n" 
+	            + " ".repeat(20) + "Y SU APELLIDO TERMINA EN 'S'"
 	    );
 	}
 	
